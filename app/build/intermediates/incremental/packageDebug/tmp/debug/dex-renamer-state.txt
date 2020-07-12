@@ -1,0 +1,7 @@
+#Sun Jul 12 21:36:02 IST 2020
+base.0=/Users/rahuldhrub/Desktop/Imdb_movie_list-access-Android-app/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=/Users/rahuldhrub/Desktop/Imdb_movie_list-access-Android-app/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex
