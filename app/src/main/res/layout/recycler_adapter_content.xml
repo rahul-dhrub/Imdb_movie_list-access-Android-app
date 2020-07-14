@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="165sp"
+    android:outlineSpotShadowColor="@color/colorAccent"
+    android:outlineAmbientShadowColor="@color/colorPrimaryDark"
+    android:padding="6dip">
+
+    <ImageView
+        android:id="@+id/Poster"
+        android:layout_width="200dp"
+        android:layout_height="58dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="6dip"
+        android:layout_marginBottom="0dp"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/MovieTitle"
+        android:layout_width="189dp"
+        android:layout_height="86dp"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="8dp"
+        android:layout_toEndOf="@+id/Poster"
+        android:gravity="center_vertical"
+        android:text="Example application"
+        android:textColor="#0C2581"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/ReleaseYear"
+        android:layout_width="179dp"
+        android:layout_height="49dp"
+        android:layout_below="@+id/MovieTitle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toRightOf="@id/Poster"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="Description"
+        android:textColor="#89A606"
+        android:textSize="15sp" />
+
+
+</RelativeLayout>

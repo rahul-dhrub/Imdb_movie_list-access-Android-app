@@ -1,10 +1,7 @@
 package com.example.imdb_app2.presenter
 
 import android.view.View
-import com.example.imdb_app2.model.Movies_data
-import com.example.imdb_app2.model.api_urls
-import com.example.imdb_app2.model.stored_data
-import com.example.imdb_app2.model.urls_type
+import com.example.imdb_app2.model.*
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
@@ -31,8 +28,9 @@ class Api_processing {
             override fun onFailure(call: Call, e: IOException) {
 
             }
+
             override fun onResponse(call: Call, response: Response) {
-                val resString = response.body()?.string()
+                val resString = response.body?.string()
                 val returnedObj = gson?.fromJson(
                     resString,
                     Movies_data.json_movies::class.java
@@ -52,15 +50,19 @@ class Api_processing {
     fun get_name_list(mov_type: urls_type): List<String> {
         return stored_data.get_array_movies_name(mov_type)
     }
-    fun fetchAPI(){
-         run(urls_type.POPULAR)
-         run(urls_type.TOP)
-         run(urls_type.LATEST)
+
+    fun get_detail_list(mov_type: urls_type): Array<Moviedetail> {
+        return stored_data.get_array_movie_details(mov_type)
+    }
+
+    fun fetchAPI() {
+        run(urls_type.POPULAR)
+        run(urls_type.TOP)
+        run(urls_type.LATEST)
     }
 
 
     interface view {
-        fun get_list(url_type: urls_type): Array<String>
         fun getData()
     }
 }

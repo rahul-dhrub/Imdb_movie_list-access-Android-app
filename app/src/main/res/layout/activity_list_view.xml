@@ -7,28 +7,22 @@ android:layout_height="match_parent"
 tools:context=".view.ListViewClass">
 
 
-    <ListView
-        android:id="@+id/listview_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.421" />
+    <include
+        layout="@layout/list_layout"   />
 
     <TextView
-    android:id="@+id/page3Text"
-    android:layout_width="118dp"
-    android:layout_height="27dp"
-    android:textColor="@color/colorPrimaryDark"
-    android:background="@color/colorAccent"
-    android:text="IMDB movie list"
-    android:textSize="20sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.563"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/listview_1"
-    app:layout_constraintVertical_bias="0.955" />
+        android:id="@+id/page3Text"
+        android:layout_width="118dp"
+        android:layout_height="27dp"
+        android:background="@color/colorAccent"
+        android:text="IMDB movie list"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.955" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

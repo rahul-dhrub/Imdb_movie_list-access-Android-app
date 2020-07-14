@@ -2,8 +2,6 @@ package com.example.imdb_app2.model
 //import kotlinx.serialization.*
 //import kotlinx.serialization.json.JSON
 
-import org.json.JSONObject
-
 class Movies_data {
 
     data class json_movies(
@@ -31,6 +29,8 @@ class Movies_data {
     )
 }
 
+data class Moviedetail(val Image_Url: String, val Name: String, val ReleaseDate: String)
+
 object stored_data {
     lateinit var popular_movies: Movies_data.json_movies
     lateinit var top_movies: Movies_data.json_movies
@@ -47,6 +47,56 @@ object stored_data {
         upcoming_movies = list
     }
 
+    fun append(arr: Array<Moviedetail>, element: Moviedetail): Array<Moviedetail> {
+        val list: MutableList<Moviedetail> = arr.toMutableList()
+        list.add(element)
+        return list.toTypedArray()
+    }
+
+    fun get_array_movie_details(urlsType: urls_type): Array<Moviedetail> {
+        val result: MutableList<Moviedetail> = ArrayList()
+        try {
+            when (urlsType) {
+                urls_type.POPULAR -> {
+                    for (elm in popular_movies.results) {
+                        result.add(
+                            Moviedetail(
+                                Image_Url = elm.poster_path,
+                                Name = elm.title,
+                                ReleaseDate = elm.release_date
+                            )
+                        )
+                    }
+                }
+                urls_type.TOP -> {
+                    for (elm in top_movies.results) {
+                        result.add(
+                            Moviedetail(
+                                Image_Url = elm.poster_path,
+                                Name = elm.title,
+                                ReleaseDate = elm.release_date
+                            )
+                        )
+                    }
+                }
+                urls_type.LATEST -> {
+                    for (elm in upcoming_movies.results) {
+                        result.add(
+                            Moviedetail(
+                                Image_Url = elm.poster_path,
+                                Name = elm.title,
+                                ReleaseDate = elm.release_date
+                            )
+                        )
+                    }
+                }
+                else -> TODO()
+            }
+        } catch (e: NullPointerException) {
+        }
+        return result.toTypedArray()
+    }
+
     fun get_array_movies_name(urlsType: urls_type): List<String> {
         try {
             var fetchObject: List<String> = when (urlsType) {
@@ -56,9 +106,8 @@ object stored_data {
                 else -> popular_movies
             } as List<String>
             return fetchObject
-        } catch (e : NullPointerException)
-        {
-                println("Empty List" + e)
+        } catch (e: NullPointerException) {
+            println("Empty List" + e)
             return emptyList()
         }
     }

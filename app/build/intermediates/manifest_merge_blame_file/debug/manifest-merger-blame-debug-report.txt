@@ -15,7 +15,7 @@
 11-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:7:5-22:19
+13-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:7:5-27:19
 14        android:allowBackup="true"
 14-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -34,28 +34,34 @@
 23        android:theme="@style/AppTheme" >
 23-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:13:9-40
 24        <activity
-24-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:14:9-20:20
-25            android:name="com.example.imdb_app2.view.MainActivity"
+24-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:14:9-103
+25            android:name="com.example.imdb_app2.view.recyclerView"
 25-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:14:19-52
-26            android:screenOrientation="fullSensor" >
+26            android:screenOrientation="fullSensor" />
 26-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:14:53-91
-27            <intent-filter>
-27-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:15:13-19:29
-28                <action android:name="android.intent.action.MAIN" />
-28-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:16:17-69
-28-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:16:25-66
-29
-30                <category android:name="android.intent.category.LAUNCHER" />
-30-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:18:17-77
-30-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:18:27-74
-31            </intent-filter>
-32        </activity>
-33        <activity
-33-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:21:9-95
-34            android:name="com.example.imdb_app2.view.ListViewClass"
-34-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:21:19-53
-35            android:screenOrientation="fullSensor" />
-35-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:21:54-92
-36    </application>
-37
-38</manifest>
+27        <activity
+27-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:15:9-23:20
+28            android:name="com.example.imdb_app2.view.MainActivity"
+28-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:16:13-46
+29            android:screenOrientation="fullSensor" >
+29-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:17:13-51
+30            <intent-filter>
+30-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:18:13-22:29
+31                <action android:name="android.intent.action.MAIN" />
+31-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:19:17-69
+31-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:19:25-66
+32
+33                <category android:name="android.intent.category.LAUNCHER" />
+33-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:21:17-77
+33-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:21:27-74
+34            </intent-filter>
+35        </activity>
+36        <activity
+36-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:24:9-26:54
+37            android:name="com.example.imdb_app2.view.ListViewClass"
+37-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:25:13-47
+38            android:screenOrientation="fullSensor" />
+38-->/Users/rahuldhrub/Desktop/Imdb_movie_list-MVP/app/src/main/AndroidManifest.xml:26:13-51
+39    </application>
+40
+41</manifest>

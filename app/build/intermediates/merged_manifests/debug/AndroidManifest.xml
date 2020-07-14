@@ -22,6 +22,9 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
+            android:name="com.example.imdb_app2.view.recyclerView"
+            android:screenOrientation="fullSensor" />
+        <activity
             android:name="com.example.imdb_app2.view.MainActivity"
             android:screenOrientation="fullSensor" >
             <intent-filter>
