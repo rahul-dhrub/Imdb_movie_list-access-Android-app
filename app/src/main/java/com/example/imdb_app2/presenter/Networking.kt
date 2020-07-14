@@ -1,69 +1,66 @@
 package com.example.imdb_app2.presenter
 
-import android.view.View
+import android.content.Context
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.example.imdb_app2.model.*
 import com.google.gson.Gson
-import okhttp3.*
-import java.io.IOException
+import org.json.JSONException
 
 
 class Api_processing {
 
-    private val client = OkHttpClient()
     var gson = Gson()
-
-    fun run(url_type: urls_type) {
-
-        var url: String = when (url_type) {
-            urls_type.TOP -> api_urls.top_movies
-            urls_type.LATEST -> api_urls.latest_movies
-            urls_type.POPULAR -> api_urls.popular_movies
-            else -> api_urls.popular_movies
-        }
-        val request = Request.Builder()
-            .url(url)
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                val resString = response.body?.string()
-                val returnedObj = gson?.fromJson(
-                    resString,
-                    Movies_data.json_movies::class.java
-                )
-                if (url_type == urls_type.TOP)
-                    stored_data.set_top_movie_list(returnedObj)
-                if (url_type == urls_type.LATEST)
-                    stored_data.set_upcoming_movies(returnedObj)
-                if (url_type == urls_type.POPULAR)
-                    stored_data.set_popular_movies(returnedObj)
-
-                println(returnedObj.results[2].original_title)
-            }
-        })
+    lateinit var mRequestQueue: RequestQueue
+    fun run(con: Context) {
+        mRequestQueue = Volley.newRequestQueue(con)
+        parseJSON(ApiUrls.latest_movies, UrlsType.LATEST)
+        parseJSON(ApiUrls.popular_movies, UrlsType.POPULAR)
+        parseJSON(ApiUrls.top_movies, UrlsType.TOP)
     }
 
-    fun get_name_list(mov_type: urls_type): List<String> {
-        return stored_data.get_array_movies_name(mov_type)
+    fun get_name_list(mov_type: UrlsType): List<String> {
+        return stored_data.getArrayMoviesName(mov_type)
     }
 
-    fun get_detail_list(mov_type: urls_type): Array<Moviedetail> {
-        return stored_data.get_array_movie_details(mov_type)
+    fun get_detail_list(mov_type: UrlsType): Array<Moviedetail> {
+        return stored_data.getArrayMovieDetails(mov_type)
     }
-
-    fun fetchAPI() {
-        run(urls_type.POPULAR)
-        run(urls_type.TOP)
-        run(urls_type.LATEST)
-    }
-
 
     interface view {
         fun getData()
     }
+
+    private fun parseJSON(url: String, url_type: UrlsType) {
+        val url = url
+        val request =
+            JsonObjectRequest(
+                Request.Method.GET, url, null,
+                Response.Listener { response ->
+                    try {
+//                        Log.i("Response received", response.toString())
+                        val returnedObj = gson.fromJson(
+                            response.toString(),
+                            Movies_data.json_movies::class.java
+                        )
+                        if (url_type == UrlsType.TOP)
+                            stored_data.setTopMovieList(returnedObj)
+                        if (url_type == UrlsType.LATEST)
+                            stored_data.setUpcomingMovies(returnedObj)
+                        if (url_type == UrlsType.POPULAR)
+                            stored_data.setPopularMovies(returnedObj)
+                        println(returnedObj.results[2].original_title)
+
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                }, Response.ErrorListener { error -> error.printStackTrace() })
+        mRequestQueue.add(request)
+    }
 }
+
+
 

@@ -1,17 +1,16 @@
 package com.example.imdb_app2.view
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import com.example.imdb_app2.R
-import com.example.imdb_app2.model.urls_type
+import com.example.imdb_app2.model.UrlsType
 import com.example.imdb_app2.presenter.Api_processing
 
 class ListViewClass : Api_processing.view, AppCompatActivity() {
     private lateinit var array: Array<String>
-    private lateinit var passed_message: urls_type
+    private lateinit var passedMessage: UrlsType
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,18 +19,18 @@ class ListViewClass : Api_processing.view, AppCompatActivity() {
         val actionbar = supportActionBar
         //set actionbar title
         actionbar!!.title =
-            (intent.getSerializableExtra("list_type") as urls_type).type + "Movies List"
+            (intent.getSerializableExtra("list_type") as UrlsType).type + "Movies List"
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
 
-        passed_message = intent.getSerializableExtra("list_type") as urls_type
+        passedMessage = intent.getSerializableExtra("list_type") as UrlsType
         getData()
         val adapter = ArrayAdapter(
             this,
             R.layout.adapter_content, array
         )
 
-        val listView: ListView = findViewById(R.id.listview_1)
+        val listView: ListView = findViewById(R.id.listView1)
         listView.setAdapter(adapter)
 
         listView.onItemClickListener = object : AdapterView.OnItemClickListener {
@@ -56,7 +55,7 @@ class ListViewClass : Api_processing.view, AppCompatActivity() {
     }
 
     override fun getData() {
-        array = Api_processing().get_name_list(passed_message).toTypedArray()
+        array = Api_processing().get_name_list(passedMessage).toTypedArray()
     }
 
     override fun onSupportNavigateUp(): Boolean {

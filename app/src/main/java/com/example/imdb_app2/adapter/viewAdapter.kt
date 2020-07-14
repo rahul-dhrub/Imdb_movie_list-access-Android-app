@@ -18,11 +18,15 @@ class CustomRecyclerAdapter(val context: Context, private val MovieDetailList: A
     RecyclerView.Adapter<CustomRecyclerAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        p0?.Name?.text = MovieDetailList[p1].Name
-        p0?.Year?.text = "Release Year : ${MovieDetailList[p1].ReleaseDate}"
+        p0.Name?.text = MovieDetailList[p1].Name
+        p0.Year?.text = "Release Year : ${MovieDetailList[p1].ReleaseDate}"
 //        Log.i("url","https://image.tmdb.org/t/p/w185"+MovieDetailList[p1].Image_Url)
+
+        val base_url = "https://image.tmdb.org/t/p/original"
         Picasso.with(context)
-            .load("https://image.tmdb.org/t/p/original"+MovieDetailList[p1].Image_Url).into(p0.image)
+            .load(base_url + MovieDetailList[p1].Image_Url)
+            .into(p0.image)
+
 //        p0?.image.setImageResource(   )
     }
 

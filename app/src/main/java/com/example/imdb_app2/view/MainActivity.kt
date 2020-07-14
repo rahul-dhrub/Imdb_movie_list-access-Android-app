@@ -3,18 +3,17 @@ package com.example.imdb_app2.view
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.imdb_app2.model.urls_type
+import com.example.imdb_app2.model.UrlsType
 import com.example.imdb_app2.presenter.Api_processing
 import android.content.Intent
 import android.widget.Switch
 import android.widget.Toast
 import com.example.imdb_app2.R
-import com.example.imdb_app2.model.Moviedetail
 
 
 class MainActivity : AppCompatActivity(), Api_processing.view {
 
-    var cardType: Int = 1
+    private var cardType: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,13 +21,13 @@ class MainActivity : AppCompatActivity(), Api_processing.view {
 
         getData()
 
-        val button_top = findViewById<Button>(R.id.button)
-        val button_pop = findViewById<Button>(R.id.button2)
-        val button_lat = findViewById<Button>(R.id.button3)
+        val buttonTop = findViewById<Button>(R.id.button)
+        val buttonPop = findViewById<Button>(R.id.button2)
+        val buttonLat = findViewById<Button>(R.id.button3)
         val listTypeSwitch = findViewById<Switch>(R.id.switch1)
 
         listTypeSwitch?.setOnCheckedChangeListener { _, isChecked ->
-            var message = ""
+            val message: String
             if (isChecked) {
                 message = "Only Movie Name"
                 cardType = 2
@@ -44,28 +43,28 @@ class MainActivity : AppCompatActivity(), Api_processing.view {
         }
 
         var intent: Intent
-        button_top.setOnClickListener {
+        buttonTop.setOnClickListener {
             intent = if (cardType == 1) Intent(this, recyclerView::class.java)
             else Intent(this, ListViewClass::class.java)
-            intent.putExtra("list_type", urls_type.TOP)
+            intent.putExtra("list_type", UrlsType.TOP)
             startActivity(intent)
         }
-        button_pop.setOnClickListener {
+        buttonPop.setOnClickListener {
             intent = if (cardType == 1) Intent(this, recyclerView::class.java)
             else Intent(this, ListViewClass::class.java)
-            intent.putExtra("list_type", urls_type.POPULAR)
+            intent.putExtra("list_type", UrlsType.POPULAR)
             startActivity(intent)
         }
-        button_lat.setOnClickListener {
+        buttonLat.setOnClickListener {
             intent = if (cardType == 1) Intent(this, recyclerView::class.java)
             else Intent(this, ListViewClass::class.java)
-            intent.putExtra("list_type", urls_type.LATEST)
+            intent.putExtra("list_type", UrlsType.LATEST)
             startActivity(intent)
         }
     }
 
     override fun getData() {
-        Api_processing().fetchAPI()
+        Api_processing().run(this)
     }
 
 }

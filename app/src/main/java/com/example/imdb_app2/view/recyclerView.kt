@@ -7,14 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imdb_app2.R
 import com.example.imdb_app2.model.Moviedetail
-import com.example.imdb_app2.model.Movies_data
-import com.example.imdb_app2.model.urls_type
+import com.example.imdb_app2.model.UrlsType
 import com.example.imdb_app2.presenter.Api_processing
 import com.example.senthil.kotlin_recyclerview.Adapter.CustomRecyclerAdapter
 
 class recyclerView : Api_processing.view, AppCompatActivity() {
-    private lateinit var passed_message : urls_type
-    private lateinit var recyclerData :Array<Moviedetail>
+    private lateinit var passedMessage: UrlsType
+    private lateinit var recyclerData: Array<Moviedetail>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,21 +22,22 @@ class recyclerView : Api_processing.view, AppCompatActivity() {
         val actionbar = supportActionBar
         //set actionbar title
         actionbar!!.title =
-            (intent.getSerializableExtra("list_type") as urls_type).type + "Movies Collection"
+            (intent.getSerializableExtra("list_type") as UrlsType).type + "Movies Collection"
         actionbar.setDisplayHomeAsUpEnabled(true)
 
 
-        passed_message = intent.getSerializableExtra("list_type") as urls_type
+        passedMessage = intent.getSerializableExtra("list_type") as UrlsType
         getData()
         val rvRecyclerView = findViewById<RecyclerView>(R.id.sample_recyclerView)
         rvRecyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        var adapter = CustomRecyclerAdapter(this, recyclerData)
+        val adapter = CustomRecyclerAdapter(this, recyclerData)
         rvRecyclerView.adapter = adapter
     }
 
     override fun getData() {
-        recyclerData = Api_processing().get_detail_list(passed_message)
+        recyclerData = Api_processing().get_detail_list(passedMessage)
     }
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true

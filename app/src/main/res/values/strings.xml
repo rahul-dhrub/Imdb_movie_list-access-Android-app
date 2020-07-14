@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">imdb-app2</string>
+    <string name="bottom_message">IMDB movie list</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="popular">Popular</string>
+    <string name="latest">Latest</string>
+    <string name="switchName">Switch</string>
+    <string name="SwitchMessage">Toggle Switch to Change Result View</string>
+    <string name="description">Description</string>
 </resources>

@@ -1,4 +1,7 @@
 package com.example.imdb_app2.model
+
+import android.util.Log
+
 //import kotlinx.serialization.*
 //import kotlinx.serialization.json.JSON
 
@@ -35,29 +38,23 @@ object stored_data {
     lateinit var popular_movies: Movies_data.json_movies
     lateinit var top_movies: Movies_data.json_movies
     lateinit var upcoming_movies: Movies_data.json_movies
-    fun set_popular_movies(list: Movies_data.json_movies) {
+    fun setPopularMovies(list: Movies_data.json_movies) {
         popular_movies = list
     }
 
-    fun set_top_movie_list(list: Movies_data.json_movies) {
+    fun setTopMovieList(list: Movies_data.json_movies) {
         top_movies = list
     }
 
-    fun set_upcoming_movies(list: Movies_data.json_movies) {
+    fun setUpcomingMovies(list: Movies_data.json_movies) {
         upcoming_movies = list
     }
 
-    fun append(arr: Array<Moviedetail>, element: Moviedetail): Array<Moviedetail> {
-        val list: MutableList<Moviedetail> = arr.toMutableList()
-        list.add(element)
-        return list.toTypedArray()
-    }
-
-    fun get_array_movie_details(urlsType: urls_type): Array<Moviedetail> {
+    fun getArrayMovieDetails(urlsType: UrlsType): Array<Moviedetail> {
         val result: MutableList<Moviedetail> = ArrayList()
         try {
             when (urlsType) {
-                urls_type.POPULAR -> {
+                UrlsType.POPULAR -> {
                     for (elm in popular_movies.results) {
                         result.add(
                             Moviedetail(
@@ -68,7 +65,7 @@ object stored_data {
                         )
                     }
                 }
-                urls_type.TOP -> {
+                UrlsType.TOP -> {
                     for (elm in top_movies.results) {
                         result.add(
                             Moviedetail(
@@ -79,7 +76,7 @@ object stored_data {
                         )
                     }
                 }
-                urls_type.LATEST -> {
+                UrlsType.LATEST -> {
                     for (elm in upcoming_movies.results) {
                         result.add(
                             Moviedetail(
@@ -97,18 +94,18 @@ object stored_data {
         return result.toTypedArray()
     }
 
-    fun get_array_movies_name(urlsType: urls_type): List<String> {
-        try {
-            var fetchObject: List<String> = when (urlsType) {
-                urls_type.POPULAR -> popular_movies.results.map { it.original_title }
-                urls_type.TOP -> top_movies.results.map { it.original_title }
-                urls_type.LATEST -> upcoming_movies.results.map { it.original_title }
+    fun getArrayMoviesName(urlsType: UrlsType): List<String> {
+        return try {
+            val fetchObject: List<String> = when (urlsType) {
+                UrlsType.POPULAR -> popular_movies.results.map { it.original_title }
+                UrlsType.TOP -> top_movies.results.map { it.original_title }
+                UrlsType.LATEST -> upcoming_movies.results.map { it.original_title }
                 else -> popular_movies
             } as List<String>
-            return fetchObject
+            fetchObject
         } catch (e: NullPointerException) {
-            println("Empty List" + e)
-            return emptyList()
+            Log.i("CustomErrorMessage", "Empty List$e")
+            emptyList()
         }
     }
 

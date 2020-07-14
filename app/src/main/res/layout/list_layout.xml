@@ -7,7 +7,7 @@ android:layout_height="match_parent"
 android:orientation="vertical" >
 <!-- views contained in each line -->
     <ListView
-        android:id="@+id/listview_1"
+        android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
