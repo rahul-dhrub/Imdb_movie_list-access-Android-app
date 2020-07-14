@@ -52,6 +52,10 @@ class ListViewClass : Api_processing.view ,  AppCompatActivity() {
         return Ap.get_name_list(url_type).toTypedArray()
     }
 
+    override fun getData() {
+        TODO("Not yet implemented")
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
