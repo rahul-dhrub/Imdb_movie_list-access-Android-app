@@ -831,8 +831,8 @@ id line1
 id line3
 id linearLayout
 id listMode
+id listView1
 id list_item
-id listview_1
 id message
 id middle
 id multiply
@@ -973,6 +973,7 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 mipmap ic_launcher_round
+string SwitchMessage
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -1001,8 +1002,14 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string app_name
+string bottom_message
+string description
+string latest
+string popular
 string search_menu_title
 string status_bar_notification_info_overflow
+string switchName
+string top_rated
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

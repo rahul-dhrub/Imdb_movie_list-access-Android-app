@@ -1,8 +1,6 @@
 package com.example.senthil.kotlin_recyclerview.Adapter
 
 import android.content.Context
-import android.media.Image
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.imdb_app2.R
 import com.example.imdb_app2.model.Moviedetail
 import com.squareup.picasso.Picasso
-import kotlin.math.log
 
 class CustomRecyclerAdapter(val context: Context, private val MovieDetailList: Array<Moviedetail>) :
     RecyclerView.Adapter<CustomRecyclerAdapter.ViewHolder>() {
@@ -22,9 +19,9 @@ class CustomRecyclerAdapter(val context: Context, private val MovieDetailList: A
         p0.Year?.text = "Release Year : ${MovieDetailList[p1].ReleaseDate}"
 //        Log.i("url","https://image.tmdb.org/t/p/w185"+MovieDetailList[p1].Image_Url)
 
-        val base_url = "https://image.tmdb.org/t/p/original"
+        val baseUrl = "https://image.tmdb.org/t/p/original"
         Picasso.with(context)
-            .load(base_url + MovieDetailList[p1].Image_Url)
+            .load(baseUrl + MovieDetailList[p1].Image_Url)
             .into(p0.image)
 
 //        p0?.image.setImageResource(   )
